@@ -20,10 +20,10 @@ class Turn
   def award_spoils(winner)
     if winner == player1
       player1.deck.cards.push(*@spoils_of_war)
-      @spoils_of_war.clear
+      # @spoils_of_war.clear
     elsif winner == player2
       player2.deck.cards.push(*@spoils_of_war)
-      @spoils_of_war.clear
+      # @spoils_of_war.clear
     else
       if winner.class == String
         return nil
@@ -67,7 +67,6 @@ class Turn
 
   def winner
    if type == :mutually_assured_destruction
-     nil
      return 'No Winner'
    elsif type == :war
      if player1.deck.rank_of_card_at(2) > player2.deck.rank_of_card_at(2)
