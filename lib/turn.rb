@@ -8,6 +8,7 @@ class Turn
 
   def award_spoils(winner)
     @spoils_of_war.map do |spoils|
+      # require "pry"; binding.pry
       winner.deck.cards << spoils
     end
     @spoils_of_war.clear
@@ -15,8 +16,8 @@ class Turn
 
   def pile_cards
     if type == :basic
-      (@spoils_of_war.push player1.deck.cards.delete_at(0)) &&
-      (@spoils_of_war.push player2.deck.cards.delete_at(0))
+      (@spoils_of_war.push player1.deck.cards.shift(0)) &&
+      (@spoils_of_war.push player2.deck.cards.shift(0))
     elsif
       type == :war
         @spoils_of_war.push player1.deck.cards.slice!(0)

@@ -26,7 +26,7 @@ class Game
         end
       end
 
-      cards = cards.shuffle
+      cards = cards.shuffle!
 
       deck1 = Deck.new(cards[0..25])
       deck2 = Deck.new(cards[26..-1])
@@ -38,15 +38,14 @@ class Game
 
       game = Game.new(player1, player2)
 
-      winner = turn.winner
-      # require "pry"; binding.pry
+      # winner = turn.winner
 
     loop do
-      if turn.player1.has_lost?
+      if player1.has_lost?
         p "*~*~*~* #{player2} has won the game! *~*~*~*"
         break
       elsif
-        turn.player2.has_lost?
+        player2.has_lost?
         p "*~*~*~* #{player1} has won the game! *~*~*~*"
         break
       elsif
@@ -54,15 +53,16 @@ class Game
           puts "It's a draw!" && break
         end
       else
-        # turn = Turn.new(player1, player2)
         @turn_counter += 1
       end
 
+      winner = turn.winner
+
       turn.pile_cards
 
-      turn.award_spoils(winner)
+      # turn.award_spoils(winner)
 
-      p "Turn #{"9324"}: #{"Aurora"} won #{"2"} cards"
+      p "Turn #{@turn_counter}: #{"Aurora"} won #{"2"} cards"
     end
   end
 end
