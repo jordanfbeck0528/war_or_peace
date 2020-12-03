@@ -31,9 +31,9 @@ p "Type 'GO' to start the game!"
 p "------------------------------------------------------------------"
 
 command = gets.chomp
-game = Game.new(player1, player2)
 
 if command == "GO"
+  game = Game.new(player1, player2)
   game.start
 else
   p "Maybe later then!? Until next time!"

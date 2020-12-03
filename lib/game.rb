@@ -65,8 +65,6 @@ class Game
         turn.award_spoils(winner)
       else
         winner = turn.winner
-        # spoil_count = turn.spoils_of_war.count
-        # require "pry"; binding.pry
 
         p "Turn #{@turn_counter}: #{turn.winner.name} won #{turn.spoils_of_war.count} cards"
         turn.award_spoils(winner)
