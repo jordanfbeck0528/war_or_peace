@@ -60,13 +60,16 @@ class Game
 
       turn.pile_cards
 
+
+
+
       if turn.type == :mutually_assured_destruction
-        p "Turn #{@turn_counter} - #{turn.type}: Nobody won any cards"
+        p "Turn #{@turn_counter} - #{"*mutually_assured_destruction"}: Nobody won any cards"
         turn.award_spoils(winner)
       else
         winner = turn.winner
 
-        p "Turn #{@turn_counter}: #{turn.winner.name} won #{turn.spoils_of_war.count} cards"
+        p "Turn #{@turn_counter} - #{turn.type}: #{turn.winner.name} won #{turn.spoils_of_war.count} cards"
         turn.award_spoils(winner)
       end
     end
@@ -75,13 +78,13 @@ end
 
 #
 # spoils_number_before_award = turn.spoils_of_war.count
+
+# loser_deck_count = ((player1.deck.cards.count + player2.deck.cards.count) - winner.deck.cards.count)
 #
-# loser_number = ((player1.deck.cards.count + player2.deck.cards.count) - winner.deck.cards.count)
+# loser_1_name = player1.name if player1.deck.cards.count == loser_deck_count
 #
-# loser_1 = player1.name if player1.deck.cards.count == loser_number
+# loser_2_name = player2.name if player2.deck.cards.count == loser_deck_count
 #
-# loser_2 = player2.name if player2.deck.cards.count == loser_number
+# most_loser_name1 = loser_1 if most_loser != player1.name
 #
-# most_loser = loser_1 if most_loser != player1.name
-#
-# most_loser = loser_2 if most_loser != player2.name
+# most_loser_name2 = loser_2 if most_loser != player2.name

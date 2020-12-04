@@ -24,10 +24,10 @@ class Turn
     elsif winner == player2
       player2.deck.cards.push(*@spoils_of_war)
       # @spoils_of_war.clear
-    else
-      if winner.class == String
-        return nil
-      end
+    # else
+    #   if winner.class == String
+    #     return nil
+    #   end
     end
   end
 
@@ -40,8 +40,8 @@ class Turn
         3.times { @spoils_of_war.push player1.deck.cards.slice!(0) } &&
         3.times { @spoils_of_war.push player2.deck.cards.slice!(0) }
     else
-      type == :mutually_assured_destruction
-      player1.deck.cards.shift(3) && player2.deck.cards.shift(3)
+      type == :mutually_assured_destruction                                             
+        player1.deck.cards.shift(3) && player2.deck.cards.shift(3)
     end
   end
 
@@ -67,6 +67,7 @@ class Turn
 
   def winner
    if type == :mutually_assured_destruction
+     nil
      return 'No Winner'
    elsif type == :war
      if player1.deck.rank_of_card_at(2) > player2.deck.rank_of_card_at(2)
