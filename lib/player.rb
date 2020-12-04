@@ -7,7 +7,7 @@ class Player
   end
 
   def remove_card
-    deck.cards.shift
+    deck.cards.shift  
   end
 
   def has_lost?

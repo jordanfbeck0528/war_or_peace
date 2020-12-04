@@ -4,6 +4,7 @@ class Turn
     @player1 = player1
     @player2 = player2
     @spoils_of_war = []
+    @destroyed_cards = 0
   end
 
   # def award_spoils(winner)
@@ -40,8 +41,9 @@ class Turn
         3.times { @spoils_of_war.push player1.deck.cards.slice!(0) } &&
         3.times { @spoils_of_war.push player2.deck.cards.slice!(0) }
     else
-      type == :mutually_assured_destruction                                             
+      type == :mutually_assured_destruction
         player1.deck.cards.shift(3) && player2.deck.cards.shift(3)
+        @destroyed_cards += 6
     end
   end
 

@@ -52,7 +52,7 @@ class Game
         break
       elsif
         if @turn_counter >= 1000000
-          puts "It's a draw!" && break
+          puts "---- DRAW ----" && break
         end
       else
         @turn_counter += 1
@@ -60,12 +60,12 @@ class Game
 
       turn.pile_cards
 
-
-
-
       if turn.type == :mutually_assured_destruction
-        p "Turn #{@turn_counter} - #{"*mutually_assured_destruction"}: Nobody won any cards"
+        p "Turn #{@turn_counter} - #{"*mutually_assured_destruction"}: 6 cards were removed from play"
         turn.award_spoils(winner)
+      elsif
+        turn.type == :basic
+        p "Turn #{@turn_counter} - #{turn.winner.name} won 2 cards"
       else
         winner = turn.winner
 
