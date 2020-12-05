@@ -1,3 +1,5 @@
+# require './lib/deck'
+
 class Deck
   attr_reader :cards
   def initialize(cards)
@@ -25,10 +27,11 @@ class Deck
     end
     high_cards
   end
-
+# require "pry"; binding.pry
   def rank_of_card_at(position)
+    # if @cards[position].nil?
     if @cards[position].nil?
-      0
+      return 0
     else
       @cards[position].rank
     end

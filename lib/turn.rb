@@ -7,84 +7,52 @@ class Turn
     @destroyed_cards = 0
   end
 
-  # def award_spoils(winner)
-  #   if winner.class == String
-  #     p "Sorry, no spoils this time"
-  #   else
-  #     @spoils_of_war.select do |spoils|
-  #       winner.deck.cards << spoils
-  #     end
-  #     @spoils_of_war.clear
-  #   end
-  # end
-
   def award_spoils(winner)
     if winner == player1
       player1.deck.cards.push(*@spoils_of_war)
-      # @spoils_of_war.clear
     elsif winner == player2
       player2.deck.cards.push(*@spoils_of_war)
-      # @spoils_of_war.clear
-    # else
-    #   if winner.class == String
-    #     return nil
-    #   end
     end
   end
 
   def pile_cards
     if type == :basic
-      (@spoils_of_war.push player1.deck.cards.delete_at(0)) &&
-      (@spoils_of_war.push player2.deck.cards.delete_at(0))
+      @spoils_of_war << player1.deck.remove_card
+      @spoils_of_war << player2.deck.remove_card
     elsif
       type == :war
-        3.times { @spoils_of_war.push player1.deck.cards.slice!(0) } &&
-        3.times { @spoils_of_war.push player2.deck.cards.slice!(0) }
+      3.times do
+        @spoils_of_war << player1.deck.remove_card
+        @spoils_of_war << player2.deck.remove_card
+      end
     else
       type == :mutually_assured_destruction
-        player1.deck.cards.shift(3) && player2.deck.cards.shift(3)
+      3.times do
+        player1.deck.remove_card
+        player2.deck.remove_card
         @destroyed_cards += 6
+      end
     end
   end
 
-  # def winner
-  #   # require "pry"; binding.pry
-  #   if type == :basic
-  #     if player1.deck.rank_of_card_at(0) > player2.deck.rank_of_card_at(0)
-  #       player1
-  #     elsif
-  #       player2
-  #     end
-  #   elsif type == :war
-  #     if player1.deck.rank_of_card_at(2) > player2.deck.rank_of_card_at(2)
-  #       player1
-  #     else
-  #       player2
-  #     end
-  #   else
-  #     type == :mutually_assured_destruction
-  #     "No Winner"
-  #   end
-  # end
-
   def winner
-   if type == :mutually_assured_destruction
-     nil
-     return 'No Winner'
-   elsif type == :war
-     if player1.deck.rank_of_card_at(2) > player2.deck.rank_of_card_at(2)
-       player1
-     else
-       player2
-     end
-   else type == :basic
-     if player1.deck.rank_of_card_at(0) > player2.deck.rank_of_card_at(0)
-       player1
-     else
-       player2
-     end
-   end
- end
+    if type == :mutually_assured_destruction
+      nil
+      return 'No Winner'
+    elsif type == :war
+      if player1.deck.rank_of_card_at(2) > player2.deck.rank_of_card_at(2)
+        player1
+      else
+        player2
+      end
+    else type == :basic
+      if player1.deck.rank_of_card_at(0) > player2.deck.rank_of_card_at(0)
+        player1
+      else
+        player2
+      end
+    end
+  end
 
   def type
     if player1.deck.rank_of_card_at(0) == player2.deck.rank_of_card_at(0) &&
@@ -99,3 +67,34 @@ class Turn
     end
   end
 end
+# def winner
+#   # require "pry"; binding.pry
+#   if type == :basic
+#     if player1.deck.rank_of_card_at(0) > player2.deck.rank_of_card_at(0)
+#       player1
+#     elsif
+#       player2
+#     end
+#   elsif type == :war
+#     if player1.deck.rank_of_card_at(2) > player2.deck.rank_of_card_at(2)
+#       player1
+#     else
+#       player2
+#     end
+#   else
+#     type == :mutually_assured_destruction
+#     "No Winner"
+#   end
+# end
+
+
+# def award_spoils(winner)
+#   if winner.class == String
+#     p "Sorry, no spoils this time"
+#   else
+#     @spoils_of_war.select do |spoils|
+#       winner.deck.cards << spoils
+#     end
+#     @spoils_of_war.clear
+#   end
+# end

@@ -25,6 +25,11 @@ class DeckTest < Minitest::Test
     assert_equal 12, deck.rank_of_card_at(0)
     assert_equal 14, deck.rank_of_card_at(2)
     assert_equal [card1, card2, card3], deck.cards
+
+    # require "pry"; binding.pry
+    deck.cards.clear
+
+    assert_equal [], deck.cards
   end
 
   def test_high_ranking_cards

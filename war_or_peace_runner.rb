@@ -24,7 +24,7 @@ deck2 = Deck.new(cards[26..-1])
 player1 = Player.new('Megan', deck1)
 player2 = Player.new('Aurora', deck2)
 
-require './lib/card_generator'
+# require './lib/card_generator'
 
 # require "pry"; binding.pry
 p "Welcome to War! (or Peace) This game will be played with 52 cards."

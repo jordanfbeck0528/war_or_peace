@@ -43,6 +43,29 @@ class Game
     loop do
       turn = Turn.new(player1, player2)
       winner = turn.winner
+
+      turn.pile_cards
+
+      if turn.type == :mutually_assured_destruction
+        p "Turn #{@turn_counter} - *mutually_assured_destruction: 6 cards were removed from play"
+      elsif
+        turn.type == :basic
+
+        winner = turn.winner
+
+        p "Turn #{@turn_counter} - #{turn.winner.name} won 2 cards"
+
+        turn.award_spoils(winner)
+      else
+        turn.type == :war
+
+        winner = turn.winner
+
+        p "Turn #{@turn_counter} - #{turn.type}: #{turn.winner.name} won 6 cards"
+
+        turn.award_spoils(winner)
+      end
+
       if player1.has_lost?
         p "*~*~*~* #{player2.name} has won the game! *~*~*~*"
         break
@@ -52,25 +75,11 @@ class Game
         break
       elsif
         if @turn_counter >= 1000000
-          puts "---- DRAW ----" && break
+          p "---- DRAW ----" &&
+          break
         end
       else
         @turn_counter += 1
-      end
-
-      turn.pile_cards
-
-      if turn.type == :mutually_assured_destruction
-        p "Turn #{@turn_counter} - #{"*mutually_assured_destruction"}: 6 cards were removed from play"
-        turn.award_spoils(winner)
-      elsif
-        turn.type == :basic
-        p "Turn #{@turn_counter} - #{turn.winner.name} won 2 cards"
-      else
-        winner = turn.winner
-
-        p "Turn #{@turn_counter} - #{turn.type}: #{turn.winner.name} won #{turn.spoils_of_war.count} cards"
-        turn.award_spoils(winner)
       end
     end
   end
