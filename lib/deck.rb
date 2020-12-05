@@ -29,7 +29,6 @@ class Deck
   end
 # require "pry"; binding.pry
   def rank_of_card_at(position)
-    # if @cards[position].nil?
     if @cards[position].nil?
       return 0
     else
