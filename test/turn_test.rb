@@ -150,12 +150,12 @@ class TurnTest < Minitest::Test
 
     turn.pile_cards
 
-   assert_equal turn.spoils_of_war.include?(card1), true
-   assert_equal turn.spoils_of_war.include?(card2), true
-   assert_equal turn.spoils_of_war.include?(card5), true
-   assert_equal turn.spoils_of_war.include?(card4), true
-   assert_equal turn.spoils_of_war.include?(card3), true
-   assert_equal turn.spoils_of_war.include?(card6), true
+    assert_equal turn.spoils_of_war.include?(card1), true
+    assert_equal turn.spoils_of_war.include?(card2), true
+    assert_equal turn.spoils_of_war.include?(card5), true
+    assert_equal turn.spoils_of_war.include?(card4), true
+    assert_equal turn.spoils_of_war.include?(card3), true
+    assert_equal turn.spoils_of_war.include?(card6), true
 
     # assert_equal [card1, card2, card5, card4, card3, card6], turn.spoils_of_war
   end
