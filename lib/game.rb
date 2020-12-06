@@ -47,10 +47,10 @@ class Game
       turn.pile_cards
 
       if turn.type == :mutually_assured_destruction
+        # require "pry"; binding.pry
         p "Turn #{@turn_counter} - *mutually_assured_destruction: 6 cards were removed from play"
       elsif
         turn.type == :basic
-
         winner = turn.winner
 
         p "Turn #{@turn_counter} - #{turn.winner.name} won 2 cards"
@@ -58,7 +58,6 @@ class Game
         turn.award_spoils(winner)
       else
         turn.type == :war
-
         winner = turn.winner
 
         p "Turn #{@turn_counter} - #{turn.type}: #{turn.winner.name} won 6 cards"
@@ -82,10 +81,16 @@ class Game
         @turn_counter += 1
       end
     end
+    # p "Thanks for playing"
+    # p "Would you like to play again? If so, put yes"
+    #
+    # play_again_answer = gets.chomp
+    #
+    # if play_again_answer == "yes"
   end
 end
 
-#
+0
 # spoils_number_before_award = turn.spoils_of_war.count
 
 # loser_deck_count = ((player1.deck.cards.count + player2.deck.cards.count) - winner.deck.cards.count)

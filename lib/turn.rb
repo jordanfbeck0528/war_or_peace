@@ -38,8 +38,7 @@ class Turn
 
   def winner
     if type == :mutually_assured_destruction
-      nil
-      return 'No Winner'
+      p 'No Winner this turn'
     elsif type == :war
       if player1.deck.rank_of_card_at(2) > player2.deck.rank_of_card_at(2)
         player1
